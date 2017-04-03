@@ -1,5 +1,7 @@
 package com.solarvillage.datamodel;
 
+import java.time.LocalDate;
+
 public class OverallOrder {
 	HOAApproval hoaApproval;
 	GovtApproval govtApproval;
@@ -17,7 +19,7 @@ public class OverallOrder {
 	
 	//Constructor for owners who are part of an HOA
 	public OverallOrder(String ownerName, String ownerAddress, String hoaName, String hoaAddress,
-						String elecPermID, String strucPermID) {
+						String elecPermID, String strucPermID, String hoaMeetingDate) {
 		hoaApproval = new HOAApproval();
 		govtApproval = new GovtApproval();
 		
@@ -25,6 +27,25 @@ public class OverallOrder {
 		hoaApproval.setHoaName(hoaName);
 		hoaApproval.setOwnerAddress(ownerAddress);
 		hoaApproval.setOwnerName(ownerName);
+		
+		//The below is the Java 7 and below way of performing Date calculations
+		/*DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
+		dateFormat.setTimeZone(TimeZone.getTimeZone("GMT"));
+		Date parsedMeetingDate;
+		
+		try {
+			parsedMeetingDate = dateFormat.parse(hoaMeetingDate);
+			hoaApproval.setHoaMeetingDate(parsedMeetingDate);
+			
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}*/
+		
+		//The below is the Java 8 and above way of performing LocalDate calculations
+		LocalDate meetingDate = LocalDate.parse(hoaMeetingDate);
+		
+		hoaApproval.setHoaMeetingDate(meetingDate);
 		
 		govtApproval.setElectricalPermitID(elecPermID);
 		govtApproval.setStructuralPermitID(strucPermID);
