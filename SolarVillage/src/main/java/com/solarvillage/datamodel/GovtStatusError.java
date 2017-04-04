@@ -1,9 +1,16 @@
 package com.solarvillage.datamodel;
 
 public class GovtStatusError {
+	private String queryID;
 	private String queryType;
 	private String queryResponse;
 	
+	public String getQueryID() {
+		return queryID;
+	}
+	public void setQueryID(String queryID) {
+		this.queryID = queryID;
+	}
 	public String getQueryType() {
 		return queryType;
 	}
