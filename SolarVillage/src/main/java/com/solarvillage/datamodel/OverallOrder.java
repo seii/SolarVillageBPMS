@@ -7,19 +7,18 @@ public class OverallOrder {
 	GovtApproval govtApproval;
 	
 	//Constructor for owners who are not part of an HOA
-	public OverallOrder(String ownerName, String ownerAddress, String elecPermID, String strucPermID) {
+	public OverallOrder(String ownerName, String ownerAddress, String permitID) {
 		hoaApproval = null;
 		govtApproval = new GovtApproval();
 		
-		govtApproval.setElectricalPermitID(elecPermID);
-		govtApproval.setStructuralPermitID(strucPermID);
+		govtApproval.setPermitID(permitID);
 		govtApproval.setOwnerName(ownerName);
 		govtApproval.setOwnerAddress(ownerAddress);
 	}
 	
 	//Constructor for owners who are part of an HOA
 	public OverallOrder(String ownerName, String ownerAddress, String hoaName, String hoaAddress,
-						String elecPermID, String strucPermID, String hoaMeetingDate) {
+						String permitID, String hoaMeetingDate) {
 		hoaApproval = new HOAApproval();
 		govtApproval = new GovtApproval();
 		
@@ -47,8 +46,7 @@ public class OverallOrder {
 		
 		hoaApproval.setHoaMeetingDate(meetingDate);
 		
-		govtApproval.setElectricalPermitID(elecPermID);
-		govtApproval.setStructuralPermitID(strucPermID);
+		govtApproval.setPermitID(permitID);
 		govtApproval.setOwnerName(ownerName);
 		govtApproval.setOwnerAddress(ownerAddress);
 	}

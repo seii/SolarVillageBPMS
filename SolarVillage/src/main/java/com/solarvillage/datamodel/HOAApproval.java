@@ -31,14 +31,14 @@ public class HOAApproval {
 	public String getHoaAddress() {
 		return hoaAddress;
 	}
+	public void setHoaAddress(String hoaAddress) {
+		this.hoaAddress = hoaAddress;
+	}
 	public LocalDate getHoaMeetingDate() {
 		return hoaMeetingDate;
 	}
 	public void setHoaMeetingDate(LocalDate hoaMeetingDate) {
 		this.hoaMeetingDate = hoaMeetingDate;
-	}
-	public void setHoaAddress(String hoaAddress) {
-		this.hoaAddress = hoaAddress;
 	}
 	public boolean isApproved() {
 		return isApproved;
