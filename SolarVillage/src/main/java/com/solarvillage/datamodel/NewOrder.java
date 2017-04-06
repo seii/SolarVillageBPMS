@@ -2,12 +2,12 @@ package com.solarvillage.datamodel;
 
 import java.time.LocalDate;
 
-public class OverallOrder {
+public class NewOrder {
 	HOAApproval hoaApproval;
 	GovtApproval govtApproval;
 	
 	//Constructor for owners who are not part of an HOA
-	public OverallOrder(String ownerName, String ownerAddress, String permitID) {
+	public NewOrder(String ownerName, String ownerAddress, String permitID) {
 		hoaApproval = null;
 		govtApproval = new GovtApproval();
 		
@@ -17,7 +17,7 @@ public class OverallOrder {
 	}
 	
 	//Constructor for owners who are part of an HOA
-	public OverallOrder(String ownerName, String ownerAddress, String hoaName, String hoaAddress,
+	public NewOrder(String ownerName, String ownerAddress, String hoaName, String hoaAddress,
 						String permitID, String hoaMeetingDate) {
 		hoaApproval = new HOAApproval();
 		govtApproval = new GovtApproval();
