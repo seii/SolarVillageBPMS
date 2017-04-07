@@ -1,6 +1,8 @@
 package com.solarvillage.datamodel;
 
-public class GovtApproval {
+import java.io.Serializable;
+
+public class GovtApproval implements Serializable {
 	private String ownerName;
 	private String ownerAddress;
 	private String permitID;

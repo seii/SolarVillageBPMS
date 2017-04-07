@@ -1,8 +1,9 @@
 package com.solarvillage.datamodel;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
-public class HOAApproval {
+public class HOAApproval implements Serializable {
 	private String ownerName;
 	private String ownerAddress;
 	private String hoaName;
