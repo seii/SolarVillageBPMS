@@ -1,6 +1,8 @@
 package com.solarvillage.datamodel;
 
-public class GovtStatusRequest {
+import java.io.Serializable;
+
+public class GovtStatusRequest implements Serializable {
 	private String permitID;
 	private String url;
 	private String response;

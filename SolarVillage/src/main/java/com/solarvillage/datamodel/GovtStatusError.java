@@ -1,6 +1,8 @@
 package com.solarvillage.datamodel;
 
-public class GovtStatusError {
+import java.io.Serializable;
+
+public class GovtStatusError implements Serializable {
 	private String queryID;
 	private String queryType;
 	private String queryResponse;
