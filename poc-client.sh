@@ -16,20 +16,26 @@ usage() {
 add-roles() {
 	echo '--- Overwriting users and roles in $1/domain/configuration ---'
 	cp config/domain/configuration/{application-*,mgmt-*} $1/domain/configuration/
+	echo ''
 	echo '--- Overwriting users and roles in $1/standalone/configuration ---'
 	cp config/standalone/configuration/{application-*,mgmt-*} $1/standalone/configuration/
+	echo ''
 	echo '--- Script complete! ---'
 }
 
 install() {
-#	echo '--- Creating Organizational Unit "solar-village" in BPMS ---'
-#	curl -X POST 'localhost:8080/business-central/rest/organizationalunits/' -u ${REST_USER}:${REST_PASSWORD} -H 'Accept: application/json' -H 'Content-Type: application/json' -d '{"name":"solar-village","description":null,"owner":"macgyver","repositories":null}'
-#	echo '--- Downloading GitHub repository and cloning it into "solar-village" OU ---'
-#	curl -X POST 'localhost:8080/business-central/rest/repositories/' -u ${REST_USER}:${REST_PASSWORD} -H 'Accept: application/json' -H 'Content-Type: application/json' -d '{"name":"SolarVillage","description":null,"requestType":"clone","gitURL":"https://github.com/seii/SolarVillageBPMS.git","organizationalUnitName":"solar-village"}'
+	echo '--- Creating Organizational Unit "solar-village" in BPMS ---'
+	curl -X POST 'localhost:8080/business-central/rest/organizationalunits/' -u ${REST_USER}:${REST_PASSWORD} -H 'Accept: application/json' -H 'Content-Type: application/json' -d '{"name":"solar-village","description":null,"owner":"macgyver","repositories":null}'
+	sleep 3
+	echo ''
+	echo '--- Downloading GitHub repository and cloning it into "solar-village" OU ---'
+	curl -X POST 'localhost:8080/business-central/rest/repositories/' -u ${REST_USER}:${REST_PASSWORD} -H 'Accept: application/json' -H 'Content-Type: application/json' -d '{"name":"SolarVillage","description":null,"requestType":"clone","gitURL":"https://github.com/seii/SolarVillageBPMS.git","organizationalUnitName":"solar-village"}'
+#	echo ''
 #	echo '--- Compiling and installing "SolarVillage" project within BPMS ---'
 #	curl -X POST 'localhost:8080/business-central/rest/repositories/solar-village/projects/SolarVillage/maven/install/' -u ${REST_USER}:${REST_PASSWORD} -H 'Accept: application/json'
-	echo '--- Deploying process definitions within BPMS ---'
-	curl -X POST 'localhost:8080/business-central/rest/deployment/com.solarvillage:SolarVillage:1.1/deploy' -u ${REST_USER}:${REST_PASSWORD}
+#	echo ''
+#	echo '--- Deploying process definitions within BPMS ---'
+#	curl -X POST 'localhost:8080/business-central/rest/deployment/com.solarvillage:SolarVillage:1.1/deploy' -u ${REST_USER}:${REST_PASSWORD}
 	echo ''
 	echo '--- Script complete! ---'
 }
