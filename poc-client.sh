@@ -9,7 +9,14 @@ usage() {
 	echo '=================
 	"add-roles <EAP_PATH>" -- Add example users/roles to EAP and BPMS (WARNING: THIS WILL OVERWRITE EXISTING USERS/ROLES)
 	"install" -- Clone the GitHub repository into BPMS
-	"usage" -- See this dialog again'
+	"usage" -- See this dialog again
+	"signal <PERMIT_ID> <SIGNAL>" -- Send SIGNAL to the process identified by PERMIT_ID'
+	echo ''
+	echo 'VALID SIGNALS:'
+	echo '=================
+	"approve" -- Sets the status to APPROVED
+	"deny" -- Sets the status to DENIED
+	"reset" -- Sets the status to IN_PROGRESS'
 	echo ''
 }
 
@@ -40,12 +47,20 @@ install() {
 	echo '--- Script complete! ---'
 }
 
+signal() {
+	echo '--- Signalling process ---'
+	curl -X POST 'http://localhost:8080/bpmspoc/rest/query/signal/electrical/$1/$2' -u ${REST_USER}:${REST_PASSWORD} -H 'Accept: application/json'
+}
+
 case "$1" in
     install)
         install
         ;;
     add-roles)
 	add-roles $2
+	;;
+    signal)
+	signal $2 $3
 	;;
 #    stop)
 #        stopHosts $2
